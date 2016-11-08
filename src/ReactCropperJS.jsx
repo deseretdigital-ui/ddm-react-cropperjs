@@ -6,6 +6,7 @@ import {} from './styles.scss';
 const CropperJS = React.createClass({
 
   propTypes: {
+    style: React.PropTypes.object,
     // react cropper options
     crossOrigin: React.PropTypes.string,
     src: React.PropTypes.string,
@@ -166,10 +167,11 @@ const CropperJS = React.createClass({
     };
     return (
       <div
-        {...this.props}
         src={null}
         crossOrigin={null}
-        alt={null}>
+        alt={null}
+        style={this.props.style}
+      >
         <img
           crossOrigin={this.props.crossOrigin}
           ref="img"
