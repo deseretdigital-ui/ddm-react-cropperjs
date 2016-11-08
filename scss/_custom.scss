@@ -1,0 +1,17 @@
+#crop-preview {
+  margin: 0 auto;
+  width: 406px;
+  height: 195px;
+  display: block;
+  border: 1px solid green;
+  position: relative;
+  overflow: hidden;
+}
+
+.crop-details {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}

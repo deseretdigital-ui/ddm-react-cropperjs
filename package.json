@@ -4,7 +4,7 @@
   "description": "React wrapper around the CropperJS library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "webpack-dev-server"
   },
   "keywords": [
     "react",
