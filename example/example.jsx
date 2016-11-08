@@ -2,24 +2,79 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import ReactCropper from '../src/ReactCropperJs';
 
-const Wrapper = (props) => {
-  return (
-    <div className="cropperjs-wrapper">
-      <div className="preview-container">
-        <div className="crop-preview crop-preview__normal"></div>
-        <div className="crop-preview crop-preview__smaller"></div>
-        <pre className="crop-details"></pre>
-      </div>
-      <ReactCropper {...props} />
-    </div>
-  );
-};
+const Wrapper = React.createClass({
+  propTypes: {
+    style: React.PropTypes.object,
+    // react cropper options
+    crossOrigin: React.PropTypes.string,
+    src: React.PropTypes.string,
+    alt: React.PropTypes.string,
 
-const crop = (data) => {
-  console.log(data);
-  let details = document.querySelector('.crop-details');
-  details.innerHTML = JSON.stringify(data.detail, null, 2);
-}
+    // cropper options
+    aspectRatio: React.PropTypes.number,
+    crop: React.PropTypes.func,
+    preview: React.PropTypes.string,
+    strict: React.PropTypes.bool,
+    responsive: React.PropTypes.bool,
+    checkImageOrigin: React.PropTypes.bool,
+    background: React.PropTypes.bool,
+    modal: React.PropTypes.bool,
+    guides: React.PropTypes.bool,
+    highlight: React.PropTypes.bool,
+    autoCrop: React.PropTypes.bool,
+    autoCropArea: React.PropTypes.number,
+    dragCrop: React.PropTypes.bool,
+    movable: React.PropTypes.bool,
+    cropBoxMovable: React.PropTypes.bool,
+    cropBoxResizable: React.PropTypes.bool,
+    doubleClickToggle: React.PropTypes.bool,
+    zoomable: React.PropTypes.bool,
+    mouseWheelZoom: React.PropTypes.bool,
+    touchDragZoom: React.PropTypes.bool,
+    rotatable: React.PropTypes.bool,
+    minContainerWidth: React.PropTypes.number,
+    minContainerHeight: React.PropTypes.number,
+    minCanvasWidth: React.PropTypes.number,
+    minCanvasHeight: React.PropTypes.number,
+    minCropBoxWidth: React.PropTypes.number,
+    minCropBoxHeight: React.PropTypes.number,
+
+    // cropper callbacks
+    build: React.PropTypes.func,
+    built: React.PropTypes.func,
+    cropstart: React.PropTypes.func,
+    cropmove: React.PropTypes.func,
+    cropend: React.PropTypes.func,
+    zoom: React.PropTypes.func
+  },
+
+  crop(data) {
+    let details = document.querySelector('.crop-details');
+    let dataUrl = document.querySelector('.crop-data-url');
+    details.innerHTML = JSON.stringify(data.detail, null, 2);
+    dataUrl.src =
+      this.refs.cropper.getCroppedCanvas().toDataURL();
+  },
+
+  render() {
+    let props = Object.assign({}, this.props);
+    let {crop} = this.props;
+    if (!crop) {
+      crop = this.crop;
+    }
+    return (
+      <div className="cropperjs-wrapper">
+        <div className="preview-container">
+          <div className="crop-preview crop-preview__normal"></div>
+          <div className="crop-preview crop-preview__smaller"></div>
+          <pre className="crop-details"></pre>
+          <img className="crop-data-url" />
+        </div>
+        <ReactCropper ref="cropper" {...props} crop={crop} />
+      </div>
+    );
+  }
+});
 
 let props = {
   src: '../images/demo.jpg',
@@ -27,7 +82,6 @@ let props = {
   crossOrigin: 'false',
   aspectRatio: (406 / 195),
   guides: true,
-  crop: crop,
   preview: '.crop-preview',
   zoomable: false,
   viewMode: 0,

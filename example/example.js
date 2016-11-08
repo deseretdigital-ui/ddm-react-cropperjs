@@ -46,6 +46,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -60,26 +62,82 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Wrapper = function Wrapper(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'cropperjs-wrapper' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'preview-container' },
-	      _react2.default.createElement('div', { className: 'crop-preview crop-preview__normal' }),
-	      _react2.default.createElement('div', { className: 'crop-preview crop-preview__smaller' }),
-	      _react2.default.createElement('pre', { className: 'crop-details' })
-	    ),
-	    _react2.default.createElement(_ReactCropperJs2.default, props)
-	  );
-	};
+	var Wrapper = _react2.default.createClass({
+	  displayName: 'Wrapper',
 
-	var crop = function crop(data) {
-	  console.log(data);
-	  var details = document.querySelector('.crop-details');
-	  details.innerHTML = JSON.stringify(data.detail, null, 2);
-	};
+	  propTypes: {
+	    style: _react2.default.PropTypes.object,
+	    // react cropper options
+	    crossOrigin: _react2.default.PropTypes.string,
+	    src: _react2.default.PropTypes.string,
+	    alt: _react2.default.PropTypes.string,
+
+	    // cropper options
+	    aspectRatio: _react2.default.PropTypes.number,
+	    crop: _react2.default.PropTypes.func,
+	    preview: _react2.default.PropTypes.string,
+	    strict: _react2.default.PropTypes.bool,
+	    responsive: _react2.default.PropTypes.bool,
+	    checkImageOrigin: _react2.default.PropTypes.bool,
+	    background: _react2.default.PropTypes.bool,
+	    modal: _react2.default.PropTypes.bool,
+	    guides: _react2.default.PropTypes.bool,
+	    highlight: _react2.default.PropTypes.bool,
+	    autoCrop: _react2.default.PropTypes.bool,
+	    autoCropArea: _react2.default.PropTypes.number,
+	    dragCrop: _react2.default.PropTypes.bool,
+	    movable: _react2.default.PropTypes.bool,
+	    cropBoxMovable: _react2.default.PropTypes.bool,
+	    cropBoxResizable: _react2.default.PropTypes.bool,
+	    doubleClickToggle: _react2.default.PropTypes.bool,
+	    zoomable: _react2.default.PropTypes.bool,
+	    mouseWheelZoom: _react2.default.PropTypes.bool,
+	    touchDragZoom: _react2.default.PropTypes.bool,
+	    rotatable: _react2.default.PropTypes.bool,
+	    minContainerWidth: _react2.default.PropTypes.number,
+	    minContainerHeight: _react2.default.PropTypes.number,
+	    minCanvasWidth: _react2.default.PropTypes.number,
+	    minCanvasHeight: _react2.default.PropTypes.number,
+	    minCropBoxWidth: _react2.default.PropTypes.number,
+	    minCropBoxHeight: _react2.default.PropTypes.number,
+
+	    // cropper callbacks
+	    build: _react2.default.PropTypes.func,
+	    built: _react2.default.PropTypes.func,
+	    cropstart: _react2.default.PropTypes.func,
+	    cropmove: _react2.default.PropTypes.func,
+	    cropend: _react2.default.PropTypes.func,
+	    zoom: _react2.default.PropTypes.func
+	  },
+
+	  crop: function crop(data) {
+	    var details = document.querySelector('.crop-details');
+	    var dataUrl = document.querySelector('.crop-data-url');
+	    details.innerHTML = JSON.stringify(data.detail, null, 2);
+	    dataUrl.src = this.refs.cropper.getCroppedCanvas().toDataURL();
+	  },
+	  render: function render() {
+	    var props = Object.assign({}, this.props);
+	    var crop = this.props.crop;
+
+	    if (!crop) {
+	      crop = this.crop;
+	    }
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'cropperjs-wrapper' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'preview-container' },
+	        _react2.default.createElement('div', { className: 'crop-preview crop-preview__normal' }),
+	        _react2.default.createElement('div', { className: 'crop-preview crop-preview__smaller' }),
+	        _react2.default.createElement('pre', { className: 'crop-details' }),
+	        _react2.default.createElement('img', { className: 'crop-data-url' })
+	      ),
+	      _react2.default.createElement(_ReactCropperJs2.default, _extends({ ref: 'cropper' }, props, { crop: crop }))
+	    );
+	  }
+	});
 
 	var props = {
 	  src: '../images/demo.jpg',
@@ -87,7 +145,6 @@
 	  crossOrigin: 'false',
 	  aspectRatio: 406 / 195,
 	  guides: true,
-	  crop: crop,
 	  preview: '.crop-preview',
 	  zoomable: false,
 	  viewMode: 0,

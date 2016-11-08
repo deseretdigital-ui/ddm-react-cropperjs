@@ -256,12 +256,12 @@
   cursor: not-allowed; }
 
 .preview-container {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   float: left;
   margin-left: 600px; }
 
 .crop-preview {
-  margin: 10px;
+  margin: 0 10px 10px 0;
   display: block;
   border: 1px solid green;
   position: relative;
@@ -279,3 +279,12 @@
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ccc; }
+
+.crop-data-url {
+  display: block;
+  box-sizing: border-box;
+  width: 420px;
+  padding: 10px;
+  line-height: 20px;
+  border: 1px solid #ccc;
+  overflow: scroll; }
