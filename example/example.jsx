@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import ReactCropper from '../src/ReactCropperJs';
+import ReactDOM from 'react-dom';
+import ReactCropper from '../src/ReactCropperJS';
+import '../scss/_example.scss'
 
 const Wrapper = React.createClass({
   propTypes: {
@@ -71,13 +72,13 @@ const Wrapper = React.createClass({
 });
 
 let props = {
-  src: '../images/demo.jpg',
+  src: 'images/demo.jpg',
   alt: 'Demo Image',
   aspectRatio: (406 / 195),
   guides: true,
   preview: '.crop-preview',
   zoomable: false,
-  viewMode: 0,
+  viewMode: 1,
   // Disable toggling drag mode between "crop" and "move" on doubleclick
   toggleDragModeOnDblclick: false,
   dragMode: 'crop',
@@ -92,7 +93,7 @@ let props = {
   }
 }
 
-ReactDom.render(
+ReactDOM.render(
   <Wrapper {...props} />,
   document.getElementById('ReactCropperExample')
 );

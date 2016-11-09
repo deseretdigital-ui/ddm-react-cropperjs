@@ -1,14 +1,11 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(
-      __dirname,
-      'example/example.jsx'
-  ),
+  entry: path.join(__dirname, 'example.jsx'),
   output: {
-    path: path.resolve(__dirname, 'example'),
+    path: path.resolve(__dirname, 'assets'),
     filename: 'example.js'
   },
   module: {
@@ -16,7 +13,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loaders: ['babel']
+        loader: 'babel'
       },
       {
         test: /\.(s?)css$/,
@@ -26,15 +23,15 @@ module.exports = {
         )
       },
       {
-        test: /\.png$/,
+        test: /\.(png|jpe?g)$/,
         loader: 'url-loader'
       }
     ]
   },
-  plugins: [
-    new ExtractTextPlugin('../dist/styles.css')
-  ],
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('styles.css')
+  ]
 };

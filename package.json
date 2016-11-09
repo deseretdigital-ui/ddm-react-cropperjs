@@ -4,12 +4,12 @@
   "description": "React wrapper around the CropperJS library",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server",
     "build": "npm run build-js; npm run build-example",
     "build-js": "babel ./src -d dist",
-    "build-example": "webpack",
-    "watch-example": "webpack --watch",
-    "lint": "eslint modules/*"
+    "build-example": "webpack --config example/webpack.config.js",
+    "watch-example": "webpack --config example/webpack.config.js --watch",
+    "lint": "eslint src/*",
+    "server": "webpack-dev-server --config example/webpack.config.js --content-base example/"
   },
   "keywords": [
     "react",
