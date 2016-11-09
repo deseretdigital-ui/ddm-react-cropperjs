@@ -276,15 +276,7 @@
   height: 114px; }
 
 .crop-details {
+  width: 406px;
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ccc; }
-
-.crop-data-url {
-  display: block;
-  box-sizing: border-box;
-  width: 420px;
-  padding: 10px;
-  line-height: 20px;
-  border: 1px solid #ccc;
-  overflow: scroll; }

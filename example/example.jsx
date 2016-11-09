@@ -40,20 +40,15 @@ const Wrapper = React.createClass({
     minCropBoxHeight: React.PropTypes.number,
 
     // cropper callbacks
-    build: React.PropTypes.func,
-    built: React.PropTypes.func,
     cropstart: React.PropTypes.func,
     cropmove: React.PropTypes.func,
     cropend: React.PropTypes.func,
     zoom: React.PropTypes.func
   },
 
-  crop(data) {
+  crop(event) {
     let details = document.querySelector('.crop-details');
-    let dataUrl = document.querySelector('.crop-data-url');
-    details.innerHTML = JSON.stringify(data.detail, null, 2);
-    dataUrl.src =
-      this.refs.cropper.getCroppedCanvas().toDataURL();
+    details.innerHTML = JSON.stringify(event.detail, null, 2);
   },
 
   render() {
@@ -68,7 +63,6 @@ const Wrapper = React.createClass({
           <div className="crop-preview crop-preview__normal"></div>
           <div className="crop-preview crop-preview__smaller"></div>
           <pre className="crop-details"></pre>
-          <img className="crop-data-url" />
         </div>
         <ReactCropper ref="cropper" {...props} crop={crop} />
       </div>
@@ -79,7 +73,6 @@ const Wrapper = React.createClass({
 let props = {
   src: '../images/demo.jpg',
   alt: 'Demo Image',
-  crossOrigin: 'false',
   aspectRatio: (406 / 195),
   guides: true,
   preview: '.crop-preview',
