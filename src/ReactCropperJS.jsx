@@ -1,17 +1,15 @@
 import React from 'react';
-
 import Cropper from 'cropperjs';
-import './styles.scss';
 
 const ReactCropperJS = React.createClass({
 
   propTypes: {
-    // react cropper options
+    // DDM react cropperJS options
     alt: React.PropTypes.string,
     crossOrigin: React.PropTypes.string,
     src: React.PropTypes.string.isRequired,
 
-    // cropper options
+    // CropperJS options
     aspectRatio: React.PropTypes.number,
     autoCrop: React.PropTypes.bool,
     autoCropArea: React.PropTypes.number,
@@ -56,13 +54,13 @@ const ReactCropperJS = React.createClass({
       left: React.PropTypes.number,
       top: React.PropTypes.number,
       width: React.PropTypes.number,
-      hegiht: React.PropTypes.number
+      height: React.PropTypes.number
     }),
     cropBoxData: React.PropTypes.shape({
       left: React.PropTypes.number,
       top: React.PropTypes.number,
       width: React.PropTypes.number,
-      hegiht: React.PropTypes.number
+      height: React.PropTypes.number
     }),
     data: React.PropTypes.shape({
       x: React.PropTypes.number,
@@ -82,20 +80,26 @@ const ReactCropperJS = React.createClass({
     style: React.PropTypes.object,
     zoomTo: React.PropTypes.number,
 
-    // Type of image to return as a data URL
-    imgType: React.PropTypes.string
+    // Type of image and the quality of the image to return as a data URL
+    imgType: React.PropTypes.string,
+    imgQuality: React.PropTypes.number
   },
 
   getDefaultProps() {
     return {
+      canvasData: null,
+      cropBoxData: null,
+      crossOrigin: null,
       data: null,
       dragMode: 'crop',
       enable: true,
       imgType: 'image/jpeg',
+      imgQuality: 0.92,
       rotateTo: 0,
       scaleX: 1,
       scaleY: 1,
       src: null,
+      style: null,
       zoomTo: 1
     };
   },
@@ -186,7 +190,10 @@ const ReactCropperJS = React.createClass({
   },
 
   getCroppedImgDataURL() {
-    return this.getCroppedCanvas().toDataURL(this.props.imgType);
+    return this.getCroppedCanvas().toDataURL(
+      this.props.imgType,
+      this.props.imgQuality
+    );
   },
 
   // Event handlers

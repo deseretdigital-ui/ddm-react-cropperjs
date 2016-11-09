@@ -21,10 +21,6 @@ module.exports = {
           'style-loader',
           'css-loader!sass-loader?browsers=last 2 versions'
         )
-      },
-      {
-        test: /\.(png|jpe?g)$/,
-        loader: 'url-loader'
       }
     ]
   },
