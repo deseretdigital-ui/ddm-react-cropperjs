@@ -87,6 +87,7 @@ const ReactCropperJS = React.createClass({
 
   getDefaultProps() {
     return {
+      alt: '',
       canvasData: null,
       cropBoxData: null,
       crossOrigin: null,
@@ -329,7 +330,7 @@ const ReactCropperJS = React.createClass({
           crossOrigin={this.props.crossOrigin}
           ref="img"
           src={this.props.src}
-          alt={this.props.alt === undefined ? 'picture' : this.props.alt}
+          alt={this.props.alt}
           style={imgStyle}
         />
       </div>
