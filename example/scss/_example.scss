@@ -1,0 +1,38 @@
+h1 {
+  font-family: sans-serif;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+.preview-container {
+  padding: 0 20px 20px 20px;
+  float: left;
+  margin-left: 600px;
+}
+
+.crop-preview {
+  margin: 0 10px 10px 0;
+  display: block;
+  border: 1px solid green;
+  position: relative;
+  overflow: hidden;
+}
+
+.crop-preview__normal {
+  width: 406px;
+  height: 195px;
+}
+
+.crop-preview__smaller {
+  width: 203px;
+  height: 114px;
+}
+
+.crop-details {
+  width: 406px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}

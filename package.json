@@ -2,9 +2,14 @@
   "name": "ddm-react-cropperjs",
   "version": "1.0.0",
   "description": "React wrapper around the CropperJS library",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build-js; npm run build-example",
+    "build-example": "webpack --config example/webpack.config.js",
+    "watch-example": "webpack --config example/webpack.config.js --watch",
+    "build-js": "babel ./src -d dist",
+    "lint": "eslint src/*",
+    "server": "webpack-dev-server --config example/webpack.config.js --content-base example/"
   },
   "keywords": [
     "react",
@@ -25,13 +30,13 @@
     "css-loader": "^0.23.1",
     "eslint": "^2.0",
     "eslint-plugin-react": "^5.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.7.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "file-loader": "^0.9.0"
+    "webpack-dev-server": "^1.16.2"
   }
 }
