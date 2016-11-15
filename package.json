@@ -1,6 +1,6 @@
 {
   "name": "ddm-react-cropperjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React wrapper around the CropperJS library",
   "main": "dist/index.js",
   "repository": {
