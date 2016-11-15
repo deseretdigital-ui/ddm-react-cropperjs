@@ -15,7 +15,7 @@ npm install --save ddm-react-cropperjs
 NOTE: You must include the cropper.css (or cropper.min.css) file in your project. It can be found in `node_modules/cropperjs/dist`.
 
 ## Example
-See [example/example.jsx]()
+See [example/example.jsx](https://github.com/deseretdigital-ui/ddm-react-cropperjs/blob/master/example/example.jsx)
 
 ## Props
 
