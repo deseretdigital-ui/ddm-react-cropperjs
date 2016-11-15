@@ -1,109 +1,107 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import Cropper from 'cropperjs';
 
-const ReactCropperJS = React.createClass({
+class ReactCropperJS extends Component {
 
-  propTypes: {
+  static propTypes = {
     // DDM react cropperJS options
-    alt: React.PropTypes.string,
-    crossOrigin: React.PropTypes.string,
-    src: React.PropTypes.string.isRequired,
+    alt: PropTypes.string,
+    crossOrigin: PropTypes.string,
+    src: PropTypes.string.isRequired,
 
     // CropperJS options
-    aspectRatio: React.PropTypes.number,
-    autoCrop: React.PropTypes.bool,
-    autoCropArea: React.PropTypes.number,
-    background: React.PropTypes.bool,
-    center: React.PropTypes.bool,
-    checkCrossOrigin: React.PropTypes.bool,
-    checkOrientation: React.PropTypes.bool,
-    cropBoxMovable: React.PropTypes.bool,
-    cropBoxResizable: React.PropTypes.bool,
-    guides: React.PropTypes.bool,
-    highlight: React.PropTypes.bool,
-    minCanvasHeight: React.PropTypes.number,
-    minCanvasWidth: React.PropTypes.number,
-    minContainerHeight: React.PropTypes.number,
-    minContainerWidth: React.PropTypes.number,
-    minCropBoxHeight: React.PropTypes.number,
-    minCropBoxWidth: React.PropTypes.number,
-    modal: React.PropTypes.bool,
-    movable: React.PropTypes.bool,
-    preview: React.PropTypes.string,
-    restore: React.PropTypes.bool,
-    responsive: React.PropTypes.bool,
-    rotatable: React.PropTypes.bool,
-    scalable: React.PropTypes.bool,
-    toggleDragModeOnDblclick: React.PropTypes.bool,
-    viewMode: React.PropTypes.oneOf([0, 1, 2, 3]),
-    wheelZoomRation: React.PropTypes.number,
-    zoomable: React.PropTypes.bool,
-    zoomOnTouch: React.PropTypes.bool,
-    zoomOnWheel: React.PropTypes.bool,
+    aspectRatio: PropTypes.number,
+    autoCrop: PropTypes.bool,
+    autoCropArea: PropTypes.number,
+    background: PropTypes.bool,
+    center: PropTypes.bool,
+    checkCrossOrigin: PropTypes.bool,
+    checkOrientation: PropTypes.bool,
+    cropBoxMovable: PropTypes.bool,
+    cropBoxResizable: PropTypes.bool,
+    guides: PropTypes.bool,
+    highlight: PropTypes.bool,
+    minCanvasHeight: PropTypes.number,
+    minCanvasWidth: PropTypes.number,
+    minContainerHeight: PropTypes.number,
+    minContainerWidth: PropTypes.number,
+    minCropBoxHeight: PropTypes.number,
+    minCropBoxWidth: PropTypes.number,
+    modal: PropTypes.bool,
+    movable: PropTypes.bool,
+    preview: PropTypes.string,
+    restore: PropTypes.bool,
+    responsive: PropTypes.bool,
+    rotatable: PropTypes.bool,
+    scalable: PropTypes.bool,
+    toggleDragModeOnDblclick: PropTypes.bool,
+    viewMode: PropTypes.oneOf([0, 1, 2, 3]),
+    wheelZoomRation: PropTypes.number,
+    zoomable: PropTypes.bool,
+    zoomOnTouch: PropTypes.bool,
+    zoomOnWheel: PropTypes.bool,
 
     // CropperJS event callbacks
-    crop: React.PropTypes.func,
-    cropend: React.PropTypes.func,
-    cropmove: React.PropTypes.func,
-    cropstart: React.PropTypes.func,
-    ready: React.PropTypes.func,
-    zoom: React.PropTypes.func,
+    crop: PropTypes.func,
+    cropend: PropTypes.func,
+    cropmove: PropTypes.func,
+    cropstart: PropTypes.func,
+    ready: PropTypes.func,
+    zoom: PropTypes.func,
 
     // Variable props
-    canvasData: React.PropTypes.shape({
-      left: React.PropTypes.number,
-      top: React.PropTypes.number,
-      width: React.PropTypes.number,
-      height: React.PropTypes.number
+    canvasData: PropTypes.shape({
+      left: PropTypes.number,
+      top: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number
     }),
-    cropBoxData: React.PropTypes.shape({
-      left: React.PropTypes.number,
-      top: React.PropTypes.number,
-      width: React.PropTypes.number,
-      height: React.PropTypes.number
+    cropBoxData: PropTypes.shape({
+      left: PropTypes.number,
+      top: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number
     }),
-    data: React.PropTypes.shape({
-      x: React.PropTypes.number,
-      y: React.PropTypes.number,
-      width: React.PropTypes.number,
-      height: React.PropTypes.number,
-      rotate: React.PropTypes.number,
-      scaleX: React.PropTypes.number,
-      scaleY: React.PropTypes.number
+    data: PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      rotate: PropTypes.number,
+      scaleX: PropTypes.number,
+      scaleY: PropTypes.number
     }),
-    dragMode: React.PropTypes.oneOf(['crop', 'move', 'none']),
-    enable: React.PropTypes.bool,
-    moveTo: React.PropTypes.arrayOf(React.PropTypes.number),
-    rotateTo: React.PropTypes.number,
-    scaleX: React.PropTypes.number,
-    scaleY: React.PropTypes.number,
-    style: React.PropTypes.object,
-    zoomTo: React.PropTypes.number,
+    dragMode: PropTypes.oneOf(['crop', 'move', 'none']),
+    enable: PropTypes.bool,
+    moveTo: PropTypes.arrayOf(PropTypes.number),
+    rotateTo: PropTypes.number,
+    scaleX: PropTypes.number,
+    scaleY: PropTypes.number,
+    style: PropTypes.object,
+    zoomTo: PropTypes.number,
 
     // Type of image and the quality of the image to return as a data URL
-    imgType: React.PropTypes.string,
-    imgQuality: React.PropTypes.number
-  },
+    imgType: PropTypes.string,
+    imgQuality: PropTypes.number
+  }
 
-  getDefaultProps() {
-    return {
-      alt: '',
-      canvasData: null,
-      cropBoxData: null,
-      crossOrigin: null,
-      data: null,
-      dragMode: 'crop',
-      enable: true,
-      imgType: 'image/jpeg',
-      imgQuality: 0.92,
-      rotateTo: 0,
-      scaleX: 1,
-      scaleY: 1,
-      src: null,
-      style: null,
-      zoomTo: 1
-    };
-  },
+  static defaultProps = {
+    alt: '',
+    canvasData: null,
+    cropBoxData: null,
+    crossOrigin: null,
+    data: null,
+    dragMode: 'crop',
+    enable: true,
+    imgType: 'image/jpeg',
+    imgQuality: 0.92,
+    rotateTo: 0,
+    scaleX: 1,
+    scaleY: 1,
+    src: null,
+    style: null,
+    zoomTo: 1
+  }
 
   componentDidMount() {
     let options = {}, prop;
@@ -122,7 +120,7 @@ const ReactCropperJS = React.createClass({
     }
 
     this.cropper = new Cropper(this.refs.img, options);
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.src !== this.props.src) {
@@ -180,7 +178,7 @@ const ReactCropperJS = React.createClass({
         this.disable();
       }
     }
-  },
+  }
 
   componentWillUnmount() {
     if (this.cropper) {
@@ -188,132 +186,132 @@ const ReactCropperJS = React.createClass({
       // such as resize are cleaned up and do not leak
       this.cropper.destroy();
     }
-  },
+  }
 
   getCroppedImgDataURL() {
     return this.getCroppedCanvas().toDataURL(
       this.props.imgType,
       this.props.imgQuality
     );
-  },
+  }
 
   // Event handlers
-  crop(event) {
+  crop = (event) => {
     this.props.crop(event, this.getCroppedImgDataURL());
-  },
+  }
 
-  cropend(event) {
+  cropend = (event) => {
     this.props.cropend(event, this.getCroppedImgDataURL());
-  },
+  }
 
-  cropmove(event) {
+  cropmove = (event) => {
     this.props.cropmove(event, this.getCroppedImgDataURL());
-  },
+  }
 
-  cropstart(event) {
+  cropstart = (event) => {
     this.props.cropstart(event, this.getCroppedImgDataURL());
-  },
+  }
 
-  ready(event) {
+  ready = (event) => {
     this.props.ready(event, this.getCroppedImgDataURL());
-  },
+  }
 
-  zoom(event) {
+  zoom = (event) => {
     this.props.zoom(event, this.getCroppedImgDataURL());
-  },
+  }
 
   // CropperJS wrapped functions
   move(offsetX, offsetY) {
     return this.cropper.move(offsetX, offsetY);
-  },
+  }
 
-  moveTo(x, y) {
+  moveTo = (x, y) => {
     return this.cropper.moveTo(x, y);
-  },
+  }
 
-  zoomTo(ratio) {
+  zoomTo = (ratio) => {
     return this.cropper.zoomTo(ratio);
-  },
+  }
 
-  rotate(degree) {
+  rotate = (degree) => {
     return this.cropper.rotate(degree);
-  },
+  }
 
-  rotateTo(degree) {
+  rotateTo = (degree) => {
     return this.cropper.rotateTo(degree);
-  },
+  }
 
-  enable() {
+  enable = () => {
     return this.cropper.enable();
-  },
+  }
 
-  disable() {
+  disable = () => {
     return this.cropper.disable();
-  },
+  }
 
-  reset() {
+  reset = () => {
     return this.cropper.reset();
-  },
+  }
 
-  clear() {
+  clear = () => {
     return this.cropper.clear();
-  },
+  }
 
-  replace(url) {
+  replace = (url) => {
     return this.cropper.replace(url);
-  },
+  }
 
-  scaleX(scaleX) {
+  scaleX = (scaleX) => {
     return this.cropper.scaleX(scaleX);
-  },
+  }
 
-  scaleY(scaleY) {
+  scaleY = (scaleY) => {
     return this.cropper.scaleY(scaleY);
-  },
+  }
 
-  getData(rounded) {
+  getData = (rounded) => {
     return this.cropper.getData(rounded);
-  },
+  }
 
-  setData(data) {
+  setData = (data) => {
     return this.cropper.setData(data);
-  },
+  }
 
-  getContainerData() {
+  getContainerData = () => {
     return this.cropper.getContainerData();
-  },
+  }
 
-  getImageData() {
+  getImageData = () => {
     return this.cropper.getImageData();
-  },
+  }
 
-  getCanvasData() {
+  getCanvasData = () => {
     return this.cropper.getCanvasData();
-  },
+  }
 
-  setCanvasData(data) {
+  setCanvasData = (data) => {
     return this.cropper.setCanvasData(data);
-  },
+  }
 
-  getCropBoxData() {
+  getCropBoxData = () => {
     return this.cropper.getCropBoxData();
-  },
+  }
 
-  setCropBoxData(data) {
+  setCropBoxData = (data) => {
     return this.cropper.setCropBoxData(data);
-  },
+  }
 
-  getCroppedCanvas(options) {
+  getCroppedCanvas = (options) => {
     return this.cropper.getCroppedCanvas(options);
-  },
+  }
 
-  setAspectRatio(aspectRatio) {
+  setAspectRatio = (aspectRatio) => {
     return this.cropper.setAspectRatio(aspectRatio);
-  },
+  }
 
-  setDragMode(dragMode) {
+  setDragMode = (dragMode) => {
     return this.cropper.setDragMode(dragMode);
-  },
+  }
 
   render() {
     const imgStyle = {
@@ -336,6 +334,6 @@ const ReactCropperJS = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default ReactCropperJS;
