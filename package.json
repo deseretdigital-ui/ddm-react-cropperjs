@@ -9,7 +9,7 @@
     "watch-example": "webpack --config example/webpack.config.js --watch",
     "build-js": "babel ./src -d dist",
     "lint": "eslint src/*",
-    "server": "webpack-dev-server --config example/webpack.config.js --content-base example/"
+    "start": "webpack-dev-server --config example/webpack.config.js --content-base example/"
   },
   "keywords": [
     "react",
