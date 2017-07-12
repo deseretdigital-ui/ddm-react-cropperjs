@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _cropperjs = require('cropperjs');
 
 var _cropperjs2 = _interopRequireDefault(_cropperjs);
@@ -228,84 +232,84 @@ var ReactCropperJS = function (_Component) {
 
 ReactCropperJS.propTypes = {
   // DDM react cropperJS options
-  alt: _react.PropTypes.string,
-  crossOrigin: _react.PropTypes.string,
-  src: _react.PropTypes.string.isRequired,
+  alt: _propTypes2.default.string,
+  crossOrigin: _propTypes2.default.string,
+  src: _propTypes2.default.string.isRequired,
 
   // CropperJS options
-  aspectRatio: _react.PropTypes.number,
-  autoCrop: _react.PropTypes.bool,
-  autoCropArea: _react.PropTypes.number,
-  background: _react.PropTypes.bool,
-  center: _react.PropTypes.bool,
-  checkCrossOrigin: _react.PropTypes.bool,
-  checkOrientation: _react.PropTypes.bool,
-  cropBoxMovable: _react.PropTypes.bool,
-  cropBoxResizable: _react.PropTypes.bool,
-  guides: _react.PropTypes.bool,
-  highlight: _react.PropTypes.bool,
-  minCanvasHeight: _react.PropTypes.number,
-  minCanvasWidth: _react.PropTypes.number,
-  minContainerHeight: _react.PropTypes.number,
-  minContainerWidth: _react.PropTypes.number,
-  minCropBoxHeight: _react.PropTypes.number,
-  minCropBoxWidth: _react.PropTypes.number,
-  modal: _react.PropTypes.bool,
-  movable: _react.PropTypes.bool,
-  preview: _react.PropTypes.string,
-  restore: _react.PropTypes.bool,
-  responsive: _react.PropTypes.bool,
-  rotatable: _react.PropTypes.bool,
-  scalable: _react.PropTypes.bool,
-  toggleDragModeOnDblclick: _react.PropTypes.bool,
-  viewMode: _react.PropTypes.oneOf([0, 1, 2, 3]),
-  wheelZoomRation: _react.PropTypes.number,
-  zoomable: _react.PropTypes.bool,
-  zoomOnTouch: _react.PropTypes.bool,
-  zoomOnWheel: _react.PropTypes.bool,
+  aspectRatio: _propTypes2.default.number,
+  autoCrop: _propTypes2.default.bool,
+  autoCropArea: _propTypes2.default.number,
+  background: _propTypes2.default.bool,
+  center: _propTypes2.default.bool,
+  checkCrossOrigin: _propTypes2.default.bool,
+  checkOrientation: _propTypes2.default.bool,
+  cropBoxMovable: _propTypes2.default.bool,
+  cropBoxResizable: _propTypes2.default.bool,
+  guides: _propTypes2.default.bool,
+  highlight: _propTypes2.default.bool,
+  minCanvasHeight: _propTypes2.default.number,
+  minCanvasWidth: _propTypes2.default.number,
+  minContainerHeight: _propTypes2.default.number,
+  minContainerWidth: _propTypes2.default.number,
+  minCropBoxHeight: _propTypes2.default.number,
+  minCropBoxWidth: _propTypes2.default.number,
+  modal: _propTypes2.default.bool,
+  movable: _propTypes2.default.bool,
+  preview: _propTypes2.default.string,
+  restore: _propTypes2.default.bool,
+  responsive: _propTypes2.default.bool,
+  rotatable: _propTypes2.default.bool,
+  scalable: _propTypes2.default.bool,
+  toggleDragModeOnDblclick: _propTypes2.default.bool,
+  viewMode: _propTypes2.default.oneOf([0, 1, 2, 3]),
+  wheelZoomRation: _propTypes2.default.number,
+  zoomable: _propTypes2.default.bool,
+  zoomOnTouch: _propTypes2.default.bool,
+  zoomOnWheel: _propTypes2.default.bool,
 
   // CropperJS event callbacks
-  crop: _react.PropTypes.func,
-  cropend: _react.PropTypes.func,
-  cropmove: _react.PropTypes.func,
-  cropstart: _react.PropTypes.func,
-  ready: _react.PropTypes.func,
-  zoom: _react.PropTypes.func,
+  crop: _propTypes2.default.func,
+  cropend: _propTypes2.default.func,
+  cropmove: _propTypes2.default.func,
+  cropstart: _propTypes2.default.func,
+  ready: _propTypes2.default.func,
+  zoom: _propTypes2.default.func,
 
   // Variable props
-  canvasData: _react.PropTypes.shape({
-    left: _react.PropTypes.number,
-    top: _react.PropTypes.number,
-    width: _react.PropTypes.number,
-    height: _react.PropTypes.number
+  canvasData: _propTypes2.default.shape({
+    left: _propTypes2.default.number,
+    top: _propTypes2.default.number,
+    width: _propTypes2.default.number,
+    height: _propTypes2.default.number
   }),
-  cropBoxData: _react.PropTypes.shape({
-    left: _react.PropTypes.number,
-    top: _react.PropTypes.number,
-    width: _react.PropTypes.number,
-    height: _react.PropTypes.number
+  cropBoxData: _propTypes2.default.shape({
+    left: _propTypes2.default.number,
+    top: _propTypes2.default.number,
+    width: _propTypes2.default.number,
+    height: _propTypes2.default.number
   }),
-  data: _react.PropTypes.shape({
-    x: _react.PropTypes.number,
-    y: _react.PropTypes.number,
-    width: _react.PropTypes.number,
-    height: _react.PropTypes.number,
-    rotate: _react.PropTypes.number,
-    scaleX: _react.PropTypes.number,
-    scaleY: _react.PropTypes.number
+  data: _propTypes2.default.shape({
+    x: _propTypes2.default.number,
+    y: _propTypes2.default.number,
+    width: _propTypes2.default.number,
+    height: _propTypes2.default.number,
+    rotate: _propTypes2.default.number,
+    scaleX: _propTypes2.default.number,
+    scaleY: _propTypes2.default.number
   }),
-  dragMode: _react.PropTypes.oneOf(['crop', 'move', 'none']),
-  enable: _react.PropTypes.bool,
-  moveTo: _react.PropTypes.arrayOf(_react.PropTypes.number),
-  rotateTo: _react.PropTypes.number,
-  scaleX: _react.PropTypes.number,
-  scaleY: _react.PropTypes.number,
-  style: _react.PropTypes.object,
-  zoomTo: _react.PropTypes.number,
+  dragMode: _propTypes2.default.oneOf(['crop', 'move', 'none']),
+  enable: _propTypes2.default.bool,
+  moveTo: _propTypes2.default.arrayOf(_propTypes2.default.number),
+  rotateTo: _propTypes2.default.number,
+  scaleX: _propTypes2.default.number,
+  scaleY: _propTypes2.default.number,
+  style: _propTypes2.default.object,
+  zoomTo: _propTypes2.default.number,
 
   // Type of image and the quality of the image to return as a data URL
-  imgType: _react.PropTypes.string,
-  imgQuality: _react.PropTypes.number
+  imgType: _propTypes2.default.string,
+  imgQuality: _propTypes2.default.number
 };
 ReactCropperJS.defaultProps = {
   alt: '',

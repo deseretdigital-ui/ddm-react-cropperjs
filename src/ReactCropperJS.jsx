@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Cropper from 'cropperjs';
 
 class ReactCropperJS extends Component {
-
   static propTypes = {
     // DDM react cropperJS options
     alt: PropTypes.string,
