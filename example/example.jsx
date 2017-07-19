@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import ReactCropper from '../src/ReactCropperJS';
 import './scss/styles.scss';
 
-const CropperExample = React.createClass({
-  cropperProps: {
+class CropperExample extends Component {
+  cropperProps = {
     src: 'images/demo.jpg',
     alt: 'Demo Image',
     // 16:9 ratio
@@ -25,12 +25,12 @@ const CropperExample = React.createClass({
       width: '600px',
       height: '400px'
     }
-  },
+  }
 
-  crop(event) {
+  crop = (event) => {
     let details = document.querySelector('.crop-details');
     details.innerHTML = JSON.stringify(event.detail, null, 2);
-  },
+  }
 
   render() {
     return (
@@ -45,7 +45,7 @@ const CropperExample = React.createClass({
       </div>
     );
   }
-});
+}
 
 ReactDOM.render(
   <CropperExample />,

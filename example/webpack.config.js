@@ -9,23 +9,23 @@ module.exports = {
     filename: 'example.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        use: ['babel-loader']
       },
       {
         test: /\.(s?)css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader!sass-loader?browsers=last 2 versions'
-        )
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader'
+        })
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new ExtractTextPlugin('styles.css')
