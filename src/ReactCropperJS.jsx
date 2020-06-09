@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Cropper from 'cropperjs';
 
-class ReactCropperJS extends Component {
+class ReactCropperJS extends PureComponent {
   static propTypes = {
     // DDM react cropperJS options
     alt: PropTypes.string,
@@ -122,57 +122,57 @@ class ReactCropperJS extends Component {
     this.cropper = new Cropper(this.refs.img, options);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.src !== this.props.src) {
-      this.cropper.reset().clear().replace(nextProps.src);
+  componentDidUpdate(prevProps) {
+    if (this.props.src !== prevProps.src) {
+      this.cropper.reset().clear().replace(this.props.src);
     }
 
-    if (nextProps.aspectRatio !== this.props.aspectRatio) {
-      this.setAspectRatio(nextProps.aspectRatio);
+    if (this.props.aspectRatio !== prevProps.aspectRatio) {
+      this.setAspectRatio(this.props.aspectRatio);
     }
 
-    if (nextProps.data !== this.props.data) {
-      this.setData(nextProps.data);
+    if (this.props.data !== prevProps.data) {
+      this.setData(this.props.data);
     }
 
-    if (nextProps.dragMode !== this.props.dragMode) {
-      this.setDragMode(nextProps.dragMode);
+    if (this.props.dragMode !== prevProps.dragMode) {
+      this.setDragMode(this.props.dragMode);
     }
 
-    if (nextProps.cropBoxData !== this.props.cropBoxData) {
-      this.setCropBoxData(nextProps.cropBoxData);
+    if (this.props.cropBoxData !== prevProps.cropBoxData) {
+      this.setCropBoxData(this.props.cropBoxData);
     }
 
-    if (nextProps.canvasData !== this.props.canvasData) {
-      this.setCanvasData(nextProps.canvasData);
+    if (this.props.canvasData !== prevProps.canvasData) {
+      this.setCanvasData(this.props.canvasData);
     }
 
-    if (nextProps.moveTo !== this.props.moveTo) {
-      if (nextProps.moveTo.length > 1) {
-        this.moveTo(nextProps.moveTo[0], nextProps.moveTo[1]);
+    if (this.props.moveTo !== prevProps.moveTo) {
+      if (this.props.moveTo.length > 1) {
+        this.moveTo(this.props.moveTo[0], this.props.moveTo[1]);
       } else {
-        this.moveTo(nextProps.moveTo[0]);
+        this.moveTo(this.props.moveTo[0]);
       }
     }
 
-    if (nextProps.zoomTo !== this.props.zoomTo) {
-      this.zoomTo(nextProps.zoomTo);
+    if (this.props.zoomTo !== prevProps.zoomTo) {
+      this.zoomTo(this.props.zoomTo);
     }
 
-    if (nextProps.rotateTo !== this.props.rotateTo) {
-      this.rotateTo(nextProps.rotateTo);
+    if (this.props.rotateTo !== prevProps.rotateTo) {
+      this.rotateTo(this.props.rotateTo);
     }
 
-    if (nextProps.scaleX !== this.props.scaleX) {
-      this.scaleX(nextProps.scaleX);
+    if (this.props.scaleX !== prevProps.scaleX) {
+      this.scaleX(this.props.scaleX);
     }
 
-    if (nextProps.scaleY !== this.props.scaleY) {
-      this.scaleY(nextProps.scaleY);
+    if (this.props.scaleY !== prevProps.scaleY) {
+      this.scaleY(this.props.scaleY);
     }
 
-    if (nextProps.enable !== this.props.enable) {
-      if (nextProps.enable) {
+    if (this.props.enable !== prevProps.enable) {
+      if (this.props.enable) {
         this.enable();
       } else {
         this.disable();
@@ -320,7 +320,6 @@ class ReactCropperJS extends Component {
     return (
       <div
         src={null}
-        crossOrigin={null}
         alt={null}
         style={this.props.style}
       >

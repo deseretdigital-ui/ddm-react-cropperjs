@@ -1,6 +1,7 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var webpack = require('webpack');
-var path = require('path');
+/* eslint-env node */
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
   entry: path.join(__dirname, 'example.jsx'),
@@ -17,10 +18,7 @@ module.exports = {
       },
       {
         test: /\.(s?)css$/,
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
-          fallback: 'style-loader'
-        })
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
@@ -28,6 +26,8 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   plugins: [
-    new ExtractTextPlugin('styles.css')
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
   ]
 };
