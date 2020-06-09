@@ -36,10 +36,10 @@ class CropperExample extends Component {
     return (
       <div className="cropperjs-wrapper">
         <div className="preview-container">
-          <div className="crop-preview crop-preview__normal"></div>
-          <div className="crop-preview crop-preview__smaller"></div>
+          <div className="crop-preview crop-preview__normal" />
+          <div className="crop-preview crop-preview__smaller" />
           <h3>Data from event.detail</h3>
-          <pre className="crop-details"></pre>
+          <pre className="crop-details" />
         </div>
         <ReactCropper ref="cropper" {...this.cropperProps} crop={this.crop} />
       </div>
