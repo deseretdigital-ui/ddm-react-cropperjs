@@ -6,8 +6,8 @@
   "repository": "https://github.com/deseretdigital-ui/ddm-react-cropperjs.git",
   "scripts": {
     "build": "yarn run build-js; yarn run build-example",
-    "build-example": "webpack --config example/webpack.config.js --mode production",
-    "watch-example": "webpack --config example/webpack.config.js --watch --mode development",
+    "build-example": "webpack --config example/webpack.config.js",
+    "watch-example": "webpack --config example/webpack.config.js --watch",
     "build-js": "babel ./src -d dist",
     "lint": "eslint src/*",
     "start": "webpack-dev-server --config example/webpack.config.js --content-base example/"
