@@ -16,6 +16,7 @@
   },
   "rules": {
     "block-scoped-var": 2,
+    "no-prototype-builtins": "warn",
     "camelcase": [2, {"properties": "never"}],
     "default-case": 2,
     "no-else-return": 2,
@@ -35,10 +36,10 @@
     "space-in-parens": [2, "never"],
     "spaced-comment": [2, "always", {
       "line": {
-          "exceptions": ["/", "-", "+"]
+        "exceptions": ["/", "-", "+"]
       },
       "block": {
-          "exceptions": ["*"]
+        "exceptions": ["*"]
       }
     }],
     "max-len": [2, {"code": 80, "tabWidth": 2, "ignoreUrls": true}],
